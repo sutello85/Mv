@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consulta de Cores</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f3f3f3;
+      margin: 0;
+      padding: 0;
+    }
+    .header {
+      background-color: #b71c1c;
+      color: white;
+      padding: 10px 0;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .container {
+      margin-top: 20px;
+    }
+    input {
+      padding: 10px;
+      width: 300px;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #d32f2f;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #b71c1c;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .etiqueta {
+      margin-top: 20px;
+    }
+    .etiqueta img {
+      width: 100%; /* Adapta ao tamanho da tela */
+      max-width: 600px; /* Limite de largura máxima */
+      height: auto;
+      margin-top: 10px;
+    }
+    .etiqueta p {
+      font-size: 16px;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">MV_TOYOTA</div>
+  <div class="container">
+    <h2>Consultar Código de Cor</h2>
+    <input type="text" id="codigo" placeholder="Digite o código da cor">
+    <br>
+    <button onclick="consultarCor()">CONSULTAR</button>
+    <button onclick="limpar()">LIMPAR</button>
+    <div class="result" id="resultado"></div>
+    <div class="etiqueta">
+      <p>O código da cor está localizado na etiqueta conforme abaixo:</p>
+      <img src="etiqueta-exemplo.jpg" alt="Etiqueta com código da cor">
+    </div>
+  </div>
+
+  <script>
+    // Lista de códigos e cores
+    const cores = {
+      "040": "Branco Polar",
+      "089": "Branco Lunar Perolizado",
+      "218": "Preto",
+      "1G3": "Cinza",
+      "1L0": "Prata",
+      "M12": "SW4 Prata Teto Preto"
+    };
+
+    function consultarCor() {
+      const codigoInput = document.getElementById("codigo").value.trim().toUpperCase();
+      const resultado = document.getElementById("resultado");
+
+      if (cores[codigoInput]) {
+        resultado.textContent = `A cor correspondente é: ${cores[codigoInput]}`;
+        resultado.style.color = "green";
+      } else {
+        resultado.textContent = "Código não encontrado. Tente novamente.";
+        resultado.style.color = "red";
+      }
+    }
+
+    function limpar() {
+      document.getElementById("codigo").value = "";
+      document.getElementById("resultado").textContent = "";
+    }
+  </script>
+</body>
+</html>
