@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modelo pelo Chassi</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f3f3f3;
+      margin: 0;
+      padding: 0;
+    }
+    .header {
+      background-color: #b71c1c;
+      color: white;
+      padding: 10px 0;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .container {
+      margin-top: 20px;
+    }
+    input {
+      padding: 10px;
+      width: 300px;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #d32f2f;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 5px;
+    }
+    button:hover {
+      background-color: #b71c1c;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">Modelo pelo Chassi</div>
+  <div class="container">
+    <h2>Consultar Modelo pelo Chassi</h2>
+    <input type="text" id="chassi" placeholder="Digite os primeiros números do chassi">
+    <br>
+    <button onclick="consultarModelo()">CONSULTAR</button>
+    <button onclick="limpar()">LIMPAR</button>
+    <button onclick="voltar()">VOLTAR</button>
+    <div class="result" id="resultado"></div>
+  </div>
+
+  <script>
+    const modelos = {
+      "03": "SW4",
+      "04": "SW4",
+      "60": "Cabrita ou caçamba",
+      "79": "Picape SRX",
+      "18": "Picape Roda Preta",
+    };
+
+    function consultarModelo() {
+      const chassiInput = document.getElementById("chassi").value.trim();
+      const resultado = document.getElementById("resultado");
+
+      const prefixo = chassiInput.substring(0, 2); // Pega os dois primeiros números
+
+      if (modelos[prefixo]) {
+        resultado.textContent = `O modelo correspondente é: ${modelos[prefixo]}`;
+        resultado.style.color = "green";
+      } else {
+        resultado.textContent = "Chassi não identificado. Tente novamente.";
+        resultado.style.color = "red";
+      }
+    }
+
+    function limpar() {
+      document.getElementById("chassi").value = "";
+      document.getElementById("resultado").textContent = "";
+    }
+
+    function voltar() {
+      window.history.back(); // Volta para a página anterior
+    }
+  </script>
+</body>
+<footer style="background-color: #b71c1c; color: white; text-align: center; padding: 10px; position: fixed; bottom: 0; width: 100%; font-size: 14px;">
+  Leonardo Sutello - Todos os direitos reservados
+</footer>
+
+</html>
