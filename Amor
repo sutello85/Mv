@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nosso Amor</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      background: linear-gradient(to bottom, #ffe6e9, #ffc6d1);
+      color: #b71c1c;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      margin: 50px auto;
+      max-width: 600px;
+      padding: 20px;
+      background-color: #fff0f3;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    img {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      border-radius: 50%;
+      border: 5px solid #ffc6d1;
+      margin-bottom: 20px;
+    }
+
+    .contador {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 20px 0;
+      padding: 10px;
+      background: #ffc6d1;
+      border-radius: 10px;
+      color: #b71c1c;
+      animation: pulse 1s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    .texto-romantico {
+      font-size: 18px;
+      color: #b71c1c;
+      margin-top: 20px;
+      line-height: 1.8;
+    }
+
+    .coracoes {
+      font-size: 30px;
+      margin: 20px 0;
+      color: #ff6f91;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Imagem no centro -->
+    <img src="https://via.placeholder.com/300x300?text=Leonardo+%26+Vitórya" alt="Foto do casal">
+
+    <!-- Corações decorativos -->
+    <div class="coracoes">💖💞💕💓</div>
+
+    <!-- Contador -->
+    <div id="contador" class="contador">
+      Carregando o tempo do nosso amor...
+    </div>
+
+    <!-- Texto romântico -->
+    <div class="texto-romantico">
+      Estou namorando a mulher mais perfeita que existe, Vitórya, desde 11/04/2024.  
+      Você é o motivo de cada sorriso meu.  
+      Eu te amo mais a cada dia que passa, meu amor eterno! ❤️
+    </div>
+  </div>
+
+  <script>
+    const dataInicial = new Date("2024-04-11T00:00:00");
+
+    function atualizarContador() {
+      const agora = new Date();
+      const diferenca = agora - dataInicial;
+
+      // Calcular tempo em meses, dias, horas e minutos
+      const diasTotais = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+      const meses = Math.floor(diasTotais / 30.44);
+      const dias = diasTotais % Math.floor(30.44);
+      const horas = agora.getHours() - dataInicial.getHours();
+      const minutos = agora.getMinutes();
+
+      // Atualizar o contador na página
+      const textoContador = `${meses} meses, ${dias} dias, ${horas} horas e ${minutos} minutos`;
+      document.getElementById("contador").textContent = textoContador;
+    }
+
+    // Atualizar o contador a cada minuto
+    setInterval(atualizarContador, 1000);
+    atualizarContador();
+  </script>
+</body>
+</html>
