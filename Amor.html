@@ -8,7 +8,7 @@
     body {
       font-family: 'Arial', sans-serif;
       text-align: center;
-      background: linear-gradient(to bottom, #ffe6e9, #ffc6d1);
+      background: linear-gradient(to bottom, #ffe6e, #ffc6d1);
       color: #b71c1c;
       margin: 0;
       padding: 0;
@@ -64,6 +64,35 @@
       margin: 20px 0;
       color: #ff6f91;
     }
+
+    /* Efeito de corações e palavras subindo */
+    .floating {
+      position: absolute;
+      bottom: -50px;
+      font-size: 24px;
+      animation: floatUp 5s linear infinite;
+      opacity: 0;
+    }
+
+    .floating.heart {
+      color: red;
+    }
+
+    .floating.word {
+      color: #333;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-120vh);
+        opacity: 0;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -78,7 +107,8 @@
     <div id="contador" class="contador">
       Carregando o tempo do nosso amor...
     </div>
-        <!-- Vídeo do YouTube (Responsivo) -->
+
+    <!-- Vídeo do YouTube (Responsivo) -->
     <div class="video-wrapper">
       <iframe 
         src="https://www.youtube.com/embed/FEpuC98wcXE?si=MXDKEfFGEiVRH2Rg" 
@@ -88,36 +118,75 @@
         allowfullscreen>
       </iframe>
     </div>
-    <!-- Texto romântico -->
+
+    <!-- Texto romântico com efeito de digitação -->
     <div class="texto-romantico">
-      Estou namorando a mulher mais perfeita que existe, Vitórya, desde 11/04/2024.  
-      Você é o motivo de cada sorriso meu.  
-      Eu te amo mais a cada dia que passa, meu amor eterno! ❤️
+      <span id="texto-romantico"></span>
     </div>
+
   </div>
 
   <script>
+    // Efeito de digitação
+    const texto = "ESTOU NAMORANDO A MULHER MAIS PERFEITA QUE EXISTE, VITÓRYA, DESDE 11/04/2024. VOCÊ É O MOTIVO DE CADA SORRISO MEU. EU TE AMO MAIS A CADA DIA QUE PASSA, MEU AMOR ETERNO! ❤️";
+    let i = 0;
+
+    function digitar() {
+      if (i < texto.length) {
+        document.getElementById("texto-romantico").textContent += texto.charAt(i);
+        i++;
+        setTimeout(digitar, 50); // Velocidade da digitação
+      }
+    }
+
+    digitar();
+
+    // Função para atualizar o contador de tempo
     const dataInicial = new Date("2024-04-11T00:00:00");
 
     function atualizarContador() {
       const agora = new Date();
       const diferenca = agora - dataInicial;
 
-      // Calcular tempo em meses, dias, horas e minutos
       const diasTotais = Math.floor(diferenca / (1000 * 60 * 60 * 24));
       const meses = Math.floor(diasTotais / 30.44);
       const dias = diasTotais % Math.floor(30.44);
-      const horas = agora.getHours() - dataInicial.getHours();
-      const minutos = agora.getMinutes();
+      const horas = Math.floor((diferenca / (1000 * 60 * 60)) % 24);
+      const minutos = Math.floor((diferenca / (1000 * 60)) % 60);
+      const segundos = Math.floor((diferenca / 1000) % 60);
 
-      // Atualizar o contador na página
-      const textoContador = `${meses} meses, ${dias} dias, ${horas} horas e ${minutos} minutos`;
-      document.getElementById("contador").textContent = textoContador;
+      document.getElementById("contador").textContent = 
+        `${meses} meses, ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos`;
     }
 
-    // Atualizar o contador a cada minuto
     setInterval(atualizarContador, 1000);
     atualizarContador();
+
+    // Função para criar corações e palavras flutuando
+    const words = ['amor', 'carinho', 'paixão', 'felicidade', 'união'];
+
+    function createHeartOrWord() {
+      const isHeart = Math.random() > 0.5;
+      const element = document.createElement('div');
+      element.classList.add('floating');
+      element.classList.add(isHeart ? 'heart' : 'word');
+
+      if (isHeart) {
+        element.textContent = '❤';
+      } else {
+        element.textContent = words[Math.floor(Math.random() * words.length)];
+      }
+
+      element.style.left = Math.random() * 100 + 'vw'; // Posição aleatória na horizontal
+      element.style.animationDuration = Math.random() * 3 + 3 + 's'; // Animação aleatória
+      document.body.appendChild(element);
+
+      setTimeout(() => {
+        element.remove(); // Remove o elemento após a animação
+      }, 5000);
+    }
+
+    setInterval(createHeartOrWord, 300); // Gera novos corações ou palavras a cada 300ms
   </script>
 </body>
 </html>
