@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido Especial ❤️</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background: linear-gradient(to bottom, #ff9aa2, #ff6f91);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            display: none;
+            background-color: #fff;
+            color: #b71c1c;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 400px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .botao-presente {
+            font-size: 50px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+
+        .botoes {
+            margin-top: 20px;
+        }
+
+        .botao {
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 10px;
+            transition: transform 0.3s;
+        }
+
+        .sim {
+            background-color: #ff6f91;
+            color: white;
+        }
+
+        .sim:hover {
+            background-color: #ff3366;
+        }
+
+        .nao {
+            background-color: #ccc;
+            color: #333;
+        }
+
+        .nao:hover {
+            background-color: #999;
+        }
+
+        .mensagem {
+            display: none;
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #ff3366;
+        }
+
+        #musica {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Botão de presente -->
+    <button class="botao-presente" onclick="mostrarPedido()">🎁</button>
+
+    <!-- Pedido de casamento -->
+    <div class="container" id="pedido">
+        <h1>Lawanne Vitórya, você quer se casar comigo? 💍❤️</h1>
+        <div class="botoes">
+            <button class="botao sim" onclick="responderSim()">SIM 💖</button>
+            <button class="botao nao" onclick="mudarPosicao()">NÃO 💔</button>
+        </div>
+        <p class="mensagem" id="mensagem"></p>
+    </div>
+
+    <!-- Música de fundo -->
+    <audio id="musica" autoplay loop>
+        <source src="musica.mp3" type="audio/mpeg">
+        Seu navegador não suporta áudio.
+    </audio>
+
+    <script>
+        function mostrarPedido() {
+            document.querySelector('.botao-presente').style.display = 'none';
+            document.getElementById('pedido').style.display = 'block';
+            document.getElementById('musica').play();
+        }
+
+        function responderSim() {
+            document.getElementById('mensagem').innerHTML = "Você me fez a pessoa mais feliz do mundo! 💍💖";
+            document.getElementById('mensagem').style.display = "block";
+        }
+
+        function mudarPosicao() {
+            let botaoNao = document.querySelector(".nao");
+            let x = Math.random() * (window.innerWidth - 100);
+            let y = Math.random() * (window.innerHeight - 100);
+            botaoNao.style.position = "absolute";
+            botaoNao.style.left = x + "px";
+            botaoNao.style.top = y + "px";
+        }
+    </script>
+
+</body>
+</html>
