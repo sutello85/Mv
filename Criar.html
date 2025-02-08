@@ -1,1 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Página - Primeiro Beijo</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>💖 Primeirobeijo.com 💖</h1>
+    </header>
+
+    <section class="form-container">
+        <h2>Preencha os detalhes do casal</h2>
+        <form id="loveForm">
+            <label for="names">Nome do casal:</label>
+            <input type="text" id="names" placeholder="Ex: Leonardo e Vitória" required>
+
+            <label for="photos">Envie 3 fotos do casal:</label>
+            <input type="file" id="photos" accept="image/*" multiple required>
+
+            <label for="startDate">Data de início do namoro:</label>
+            <input type="date" id="startDate" required>
+
+            <label for="romanticMessage">Mensagem romântica:</label>
+            <textarea id="romanticMessage" placeholder="Escreva algo especial..." required></textarea>
+
+            <label for="youtubeLink">Música especial (YouTube):</label>
+            <input type="text" id="youtubeLink" placeholder="Cole o link do vídeo">
+
+            <label for="plan">Escolha um plano:</label>
+            <select id="plan">
+                <option value="1ano">R$ 14,99 - 1 ano</option>
+                <option value="sempre">R$ 29,99 - Para sempre</option>
+            </select>
+
+            <button type="button" id="criarPaginaBtn">Criar Página</button>
+        </form>
+    </section>
+
+    <section class="preview-container">
+        <h2>Pré-visualização</h2>
+        <div class="preview-box">
+            <h3 id="preview-names"></h3>
+            <div id="photo-slider"></div>
+            <p id="sinceTitle">💖 Estamos juntos desde:</p>
+            <p id="countdown"></p>
+            <p id="preview-message"></p>
+            <iframe id="preview-video" style="display:none;" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- Corações subindo -->
+    <div class="hearts-container"></div>
+
+    <script src="script.js"></script>
+</body>
+              </html>
 
