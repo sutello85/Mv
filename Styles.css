@@ -1,1 +1,125 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    background: linear-gradient(to right, #1a1a2e, #16213e);
+    color: white;
+    overflow-x: hidden;
+}
+
+header {
+    background: rgba(255, 77, 109, 0.8);
+    padding: 20px;
+    font-size: 22px;
+}
+
+/* Estilizando o título romântico */
+h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 48px;
+    font-weight: bold;
+    color: #ff4d6d;
+    text-shadow: 2px 2px 5px rgba(255, 77, 109, 0.5);
+    margin: 20px 0;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 32px;
+    }
+}
+
+.form-container, .preview-container {
+    max-width: 600px;
+    margin: 20px auto;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+input, textarea, select, button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 5px;
+}
+
+button {
+    background: #ff4d6d;
+    color: white;
+    font-size: 18px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.preview-box {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+/* Estilizando o slider de imagens */
+#photo-slider {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#photo-slider img {
+    position: absolute;
+    max-width: 90%;
+    max-height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 5px solid pink;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+#photo-slider img.active {
+    opacity: 1;
+}
+
+/* Animação dos corações subindo */
+.hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.heart {
+    position: absolute;
+    bottom: -10px;
+    font-size: 24px;
+    color: pink;
+    opacity: 0.7;
+    animation: floatUp 5s linear infinite;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) scale(1.5);
+        opacity: 0;
+    }
+}
 
